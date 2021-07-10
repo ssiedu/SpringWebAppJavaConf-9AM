@@ -1,5 +1,8 @@
 package com.ssi.dao;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,7 +16,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	public Product saveProduct(Product product) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
@@ -23,12 +26,20 @@ public class ProductRepositoryImpl implements ProductRepository {
 		return product;
 	}
 	
-	
 	public Product searchProduct(int code) {
 		Session session=sessionFactory.openSession();
 		Product product=session.get(Product.class, code);
 		session.close();
 		return product;
+	}
+
+
+	public List<Product> getAllProducts() {
+		Session session=sessionFactory.openSession();
+		Criteria criteria=session.createCriteria(Product.class);
+		List<Product> products=criteria.list();
+		session.close();
+		return products;
 	}
 
 

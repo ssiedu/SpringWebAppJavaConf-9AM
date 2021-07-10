@@ -1,5 +1,7 @@
 package com.ssi.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class ProductServiceImpl implements ProductService {
 			product.setDiscount(product.getPrice()*10/100);
 		}
 		return product;
+	}
+
+	public List<Product> getAllProducts() {
+		return productRepository.getAllProducts();
 	}
 
 }

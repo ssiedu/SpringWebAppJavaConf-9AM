@@ -1,5 +1,7 @@
 package com.ssi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +18,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	
+	//mapping to show product list
+	@RequestMapping("allproducts")
+	public ModelAndView showProductList() {
+		//we will fetch products from DB, add them to ModelAndView object
+		List<Product> products=productService.getAllProducts();
+		ModelAndView mv=new ModelAndView("product-list");
+		mv.addObject("products", products);
+		return mv;
+	}
 	//mapping for save product form submission
 	@RequestMapping("saveproduct")
 	public ModelAndView saveProductDetails(@ModelAttribute("product") Product product) { 
