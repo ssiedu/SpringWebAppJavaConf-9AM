@@ -18,6 +18,14 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@RequestMapping("remove")
+	public ModelAndView removeProduct(@RequestParam("code") int code) {
+		Product product=productService.deleteProduct(code);
+		ModelAndView mv=new ModelAndView("delete-confirm");
+		mv.addObject("product", product);
+		return mv;
+	}
+	
 	//mapping to show product list
 	@RequestMapping("allproducts")
 	public ModelAndView showProductList() {

@@ -36,4 +36,8 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getAllProducts();
 	}
 
+	public Product deleteProduct(int code) {
+		return productRepository.deleteProduct(code);
+	}
+
 }

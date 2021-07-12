@@ -1,21 +1,22 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl" %>
 <%@page import="java.util.List, com.ssi.model.Product" %>
-<%
-	List<Product> products=(List<Product>)request.getAttribute("products");
-%>
+<%@page isELIgnored="false" %>
+
 <html>
 <body>
-	<h3>Product-List</h3>
+	<h3>Product-List-Using-JSTL</h3>
 	<hr>
 	<table border="1">
-		<%
-			for(Product product:products){
-		%>	
-		<tr>	
-			<td><%=product.getPcode()%></td><td><%=product.getPname()%></td><tD><%=product.getPrice()%></td>
-		</tr>	
-		<% 		
-			}
-		%>
+		<tr><th>Code</th><th>Name</th><th>Price</th></tr>
+		<jstl:forEach var="product" items="${products}">
+			<tr>
+			<td>${product.pcode}</td>
+			<td>${product.pname}</td>
+			<td>${product.price}</td>
+			<td><a href="remove?code=${product.pcode}">delete</a></td>
+			<td><a href="">modify</a></td>
+			</tr>
+		</jstl:forEach>
 	</table>
 	<hr>
 	<a href="index.jsp">Home</a>

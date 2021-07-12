@@ -42,6 +42,16 @@ public class ProductRepositoryImpl implements ProductRepository {
 		return products;
 	}
 
+	public Product deleteProduct(int code) {
+		Session session=sessionFactory.openSession();
+		Transaction tr=session.beginTransaction();
+		Product product=session.get(Product.class, code);
+		session.delete(product);
+		tr.commit();
+		session.close();
+		return product;
+	}
+
 
 
 }
