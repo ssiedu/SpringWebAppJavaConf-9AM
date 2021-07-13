@@ -1,5 +1,6 @@
 package com.ssi.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,22 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@RequestMapping("savechanges")
+	public ModelAndView saveChanges(@ModelAttribute("product") Product product) {
+		productService.saveProduct(product);
+		ModelAndView mv=new ModelAndView("redirect:allproducts");
+		return mv;
+	}
+	@RequestMapping("update")
+	public ModelAndView showUpdateForm(@RequestParam("code") int pcode) {
+		Product product=productService.productDetails(pcode);
+		ModelAndView mv=new ModelAndView("pupdate");
+		mv.addObject("product",product);
+		
+		List<String> names=Arrays.asList("Mouse","KeyBoard","LED","LCD","DVD","USBDrive","HDD");
+		mv.addObject("pnames",names);
+		return mv;
+	}
 	@RequestMapping("remove")
 	public ModelAndView removeProduct(@RequestParam("code") int code) {
 		Product product=productService.deleteProduct(code);

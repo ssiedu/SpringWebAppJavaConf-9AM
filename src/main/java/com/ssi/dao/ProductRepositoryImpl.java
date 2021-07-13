@@ -20,7 +20,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public Product saveProduct(Product product) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		session.save(product);
+		//session.save(product);
+		session.saveOrUpdate(product);
 		tr.commit();
 		session.close();
 		return product;
