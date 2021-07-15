@@ -5,16 +5,13 @@
 	<hr>
 		<form action="saveproduct">
 		<pre>
-			PCode	<input type="text" name="pcode"/> 
-			PName	<input type="text" name="pname"/>
-			Price	<input type="text" name="price"/>
+			PCode	<input type="text" name="pcode"/><fr:errors path="product.pcode"/><br> 
+			PName	<input type="text" name="pname"/><fr:errors path="product.pname"/><br>
+			Price	<input type="text" name="price"/><fr:errors path="product.price"/><br>
+			Picture <input type="file" name="pic"/>
 				<input type="submit" value="Save"/>
 		</pre>	
 		</form>
-	<hr>
-		<fr:errors path="product.pcode"/><br>
-		<fr:errors path="product.pname"/><br>
-		<fr:errors path="product.price"/><br>
 	<hr>
 	<a href="index.jsp">Home</a>
 </body>

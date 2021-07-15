@@ -3,6 +3,8 @@ package com.ssi.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ssi.model.Product;
 import com.ssi.service.ProductService;
 
@@ -55,7 +56,7 @@ public class ProductController {
 	}
 	//mapping for save product form submission
 	@RequestMapping("saveproduct")
-	public ModelAndView saveProductDetails(@ModelAttribute("product") Product product, BindingResult result) { 
+	public ModelAndView saveProductDetails(@Valid @ModelAttribute("product") Product product, BindingResult result) { 
 		if(result.hasErrors()) {
 			//some errors are there
 			//ModelAndView mv=new ModelAndView("errpage");
