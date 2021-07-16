@@ -1,18 +1,14 @@
 package com.ssi.model;
 
-import java.sql.Date;
+import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.CreditCardNumber;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Range;
 
 import lombok.Data;
@@ -32,5 +28,5 @@ public class Product {
 	@Min(value=100,message="minimum price allowed is : 100")
 	private int price;
 	private int discount;
-
+	private Blob picture;
 }

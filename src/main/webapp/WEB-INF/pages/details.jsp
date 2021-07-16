@@ -21,6 +21,7 @@
 			<td>${product.discount}</td>
 		<tr>
 	</table>
+	<img src="loadimage?code=${product.pcode}" height="100" width="100"/>
 	<hr>
 	<a href="index.jsp">Home</a>
 </body>
