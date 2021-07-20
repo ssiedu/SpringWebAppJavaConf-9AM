@@ -6,6 +6,7 @@
 	<a href="newproduct">Add-New-Product</a>
 	<a href="searchinput">Search-Product</a>
 	<a href="allproducts">View-All-Products</a>
+	<a href="mail">Send-Email</a>
 	</pre>
 <hr>
 </body>
